@@ -1,0 +1,74 @@
+{
+  "concesionario": {
+    "nombre": "H6 MOTORS LLC",
+    "ubicacion": "1917 Highway 6 S, Houston, TX 77077",
+    "email": "Automovilesh6@gmail.com",
+    "telefono": "Llamar para información",
+    "horarios": {
+      "lunes_viernes": "9:00 AM - 6:00 PM",
+      "sabado": "10:00 AM - 4:00 PM",
+      "domingo": "Cerrado"
+    }
+  },
+  "metodos_pago": [
+    {
+      "nombre": "Zelle",
+      "icono": "💳",
+      "descripcion": "Transferencia bancaria segura y rápida"
+    },
+    {
+      "nombre": "Cash App",
+      "icono": "📱",
+      "descripcion": "App móvil para pagos digitales"
+    },
+    {
+      "nombre": "Efectivo",
+      "icono": "💵",
+      "descripcion": "Pago en efectivo directo"
+    }
+  ],
+  "vehiculos": [
+    {
+      "id": 1,
+      "marca": "Toyota",
+      "modelo": "Tacoma",
+      "ano": 2013,
+      "color": "Blanco Pearl",
+      "millaje": 142000,
+      "transmision": "Automática",
+      "motor": "2.7L 4-Cil",
+      "precio": 18500,
+      "disponible": true,
+      "descripcion": "Excelente condición, funcionamiento perfecto",
+      "fotos_descripcion": "7 fotos: frontal, trasera, laterales, motor, interior"
+    },
+    {
+      "id": 2,
+      "marca": "Ford",
+      "modelo": "F-150",
+      "ano": 2016,
+      "color": "Blanco",
+      "millaje": 200000,
+      "transmision": "Automática",
+      "motor": "3.5L V6",
+      "precio": 9500,
+      "disponible": true,
+      "descripcion": "Buen estado, lista para trabajar",
+      "fotos_descripcion": "Múltiples ángulos disponibles"
+    },
+    {
+      "id": 3,
+      "marca": "Chevrolet",
+      "modelo": "Silverado",
+      "ano": 2023,
+      "color": "Blanco",
+      "millaje": 130000,
+      "transmision": "Automática",
+      "motor": "5.3L V8",
+      "precio": 17000,
+      "disponible": true,
+      "descripcion": "Casi nuevo, excelentes condiciones",
+      "fotos_descripcion": "Casi nueva con bajo millaje"
+    }
+  ]
+}
