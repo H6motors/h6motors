@@ -1,680 +1,264 @@
+cd /home/claude && cat > index_fixed.html << 'EOF'
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H6 Motors LLC - Catálogo de Vehículos</title>
+    <title>H6 Motors - Inventario de Vehículos</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap');
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #A91A1A;
-            --primary-dark: #7A1515;
-            --black: #0A0E27;
-            --dark-gray: #1A1F3A;
-            --light-gray: #F5F7FA;
-            --text-dark: #0A0E27;
-            --text-light: #FFFFFF;
-            --border: #E5E7EB;
-        }
-
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--light-gray);
-            color: var(--text-dark);
-            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #333;
+            min-height: 100vh;
         }
 
-        html { scroll-behavior: smooth; }
-
-        /* HEADER */
-        header {
-            background: var(--text-light);
-            padding: 1.5rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid var(--primary);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 3px solid #ff6b35;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
-        .header-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .header h1 {
+            font-size: 42px;
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 5px;
         }
 
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-        }
-
-        .logo-icon {
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.4rem;
-            color: white;
-            box-shadow: 0 4px 15px rgba(169, 26, 26, 0.2);
-        }
-
-        .logo-text h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            color: var(--text-dark);
-        }
-
-        .logo-text p {
-            font-size: 0.75rem;
-            color: var(--primary);
-            font-weight: 600;
-            letter-spacing: 1px;
+        .header p {
+            color: #ff6b35;
+            font-size: 14px;
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
-        .header-links a {
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .cta-button {
-            background: var(--primary);
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .cta-button:hover {
-            background: var(--primary-dark);
-            box-shadow: 0 8px 24px rgba(169, 26, 26, 0.25);
-            transform: translateY(-2px);
-        }
-
-        /* HERO */
-        .hero {
-            background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
-            padding: 5rem 2rem;
-            text-align: center;
-            color: white;
-        }
-
-        .hero h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        /* VEHICLES GRID */
-        .showcase-section {
+        .container {
             max-width: 1400px;
-            margin: 4rem auto;
-            padding: 0 2rem;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 3rem;
-            color: var(--text-dark);
-            text-align: center;
-        }
-
-        .vehicles-grid {
+        .vehiculos-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
         }
 
-        .vehicle-card {
+        .vehiculo-card {
             background: white;
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            border: 1px solid var(--border);
-            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
         }
 
-        .vehicle-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        .vehiculo-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(255,107,53,0.3);
         }
 
-        .vehicle-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .vehicle-header .badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 0.6rem 1.5rem;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .vehicle-header h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-
-        .vehicle-specs {
-            padding: 2rem;
-        }
-
-        .specs-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .spec-item {
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .spec-label {
-            font-size: 0.8rem;
-            color: var(--primary);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-
-        .spec-value {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        .price-tag {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .price-label {
-            font-size: 0.85rem;
-            opacity: 0.9;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .price-amount {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            font-weight: 800;
-        }
-
-        .action-btn {
+        .imagen-container {
+            position: relative;
             width: 100%;
-            padding: 1rem;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
+            height: 280px;
+            background: #f0f0f0;
+            overflow: hidden;
         }
 
-        .action-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        /* PAYMENT OPTIONS */
-        .payment-options-section {
-            background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
-            color: white;
-            padding: 4rem 2rem;
-            margin: 4rem 0;
-        }
-
-        .payment-options-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .payment-option {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .payment-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .payment-option h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: #FFD700;
-        }
-
-        /* FOOTER */
-        footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
-            border-top: 2px solid var(--primary);
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h4 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-            font-weight: 700;
-        }
-
-        .footer-section p {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.8;
-        }
-
-        /* MODAL */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
+        .imagen-principal {
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
+            object-fit: cover;
         }
 
-        .modal-content {
-            background-color: white;
-            margin: 5% auto;
-            padding: 0;
-            border-radius: 16px;
-            width: 90%;
-            max-width: 600px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
+        .vehiculo-info {
+            padding: 20px;
         }
 
-        .modal-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 2rem;
-            text-align: center;
+        .vehiculo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
         }
 
-        .modal-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin: 0;
-        }
-
-        .close {
-            float: right;
-            font-size: 2rem;
+        .vehiculo-nombre {
+            font-size: 22px;
             font-weight: bold;
-            cursor: pointer;
+            color: #1a1a1a;
+        }
+
+        .vehiculo-año {
+            background: #ff6b35;
             color: white;
-            transition: color 0.3s;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
         }
 
-        .close:hover {
-            color: #FFD700;
+        .vehiculo-detalles {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 15px 0;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
         }
 
-        .modal-body {
-            padding: 2rem;
+        .detalle {
+            font-size: 12px;
+            color: #666;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        .detalle-label {
+            font-weight: bold;
+            color: #333;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+        .vehiculo-precio {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff6b35;
+            margin: 15px 0;
         }
 
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .btn-disponible {
             width: 100%;
-            padding: 0.8rem;
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: Inter;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(169, 26, 26, 0.1);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 14px;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff5722 100%);
             color: white;
             border: none;
             border-radius: 8px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(169, 26, 26, 0.3);
+        .btn-disponible:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(255,107,53,0.4);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+            font-size: 18px;
+        }
+
+        .footer {
+            background: #0d0d0d;
+            color: #999;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            border-top: 1px solid #ff6b35;
+        }
+
+        .footer p {
+            margin: 8px 0;
+            font-size: 12px;
+        }
+
+        .footer-address {
+            color: #ff6b35;
+            font-weight: bold;
+            margin: 15px 0;
         }
 
         @media (max-width: 768px) {
-            .vehicles-grid { grid-template-columns: 1fr; }
-            .specs-grid { grid-template-columns: 1fr; }
-            .header-links { display: none; }
+            .vehiculos-grid {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 32px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
-    <header>
-        <div class="header-container">
-            <div class="logo-section">
-                <div class="logo-icon">H6</div>
-                <div class="logo-text">
-                    <h1>H6 MOTORS</h1>
-                    <p>Excellence in Motion</p>
-                </div>
-            </div>
-        </div>
-    </header>
+    <div class="header">
+        <h1>🚗 H6 MOTORS</h1>
+        <p>Inventario de Vehículos Premium</p>
+    </div>
 
-    <!-- HERO -->
-    <section class="hero">
-        <h2>Catálogo de Vehículos</h2>
-        <p>Vehículos de confianza con opciones de pago flexibles</p>
-    </section>
+    <div class="container">
+        <div id="loading" class="loading">Cargando vehículos...</div>
+        <div id="vehiculosContainer" class="vehiculos-grid"></div>
+    </div>
 
-    <!-- VEHICLES SECTION -->
-    <section class="showcase-section">
-        <h2 class="section-title">Nuestros Vehículos Disponibles</h2>
-        <div class="vehicles-grid" id="vehiclesGrid"></div>
-    </section>
-
-    <!-- PAYMENT OPTIONS -->
-    <section class="payment-options-section">
-        <h2 class="section-title" style="color: white; margin-bottom: 3rem;">Métodos de Pago Disponibles</h2>
-        <div class="payment-options-grid" id="paymentGrid"></div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>H6 MOTORS LLC</h4>
-                <p id="footerAddress"></p>
-            </div>
-            <div class="footer-section">
-                <h4>Horarios</h4>
-                <p id="footerSchedule"></p>
-            </div>
-            <div class="footer-section">
-                <h4>Contacto</h4>
-                <p id="footerContact"></p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- MODAL -->
-    <div id="contactModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <h2 id="modalTitle">Solicitar Información</h2>
-            </div>
-            <div class="modal-body">
-                <form id="contactForm" onsubmit="submitForm(event)">
-                    <div class="form-group">
-                        <label>Nombre Completo *</label>
-                        <input type="text" id="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Teléfono *</label>
-                        <input type="tel" id="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email *</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Vehículo de Interés *</label>
-                        <select id="vehicle" required></select>
-                    </div>
-                    <div class="form-group">
-                        <label>Método de Pago Preferido</label>
-                        <select id="paymentMethod">
-                            <option value="Zelle">Zelle</option>
-                            <option value="Cash App">Cash App</option>
-                            <option value="Efectivo">Efectivo</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Mensaje</label>
-                        <textarea id="message" style="min-height: 80px;"></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Enviar Solicitud</button>
-                </form>
-            </div>
-        </div>
+    <div class="footer">
+        <p>📍 H6 Motors LLC</p>
+        <div class="footer-address">1917 Highway 6 S | Houston TX 77077</div>
+        <p>📞 Vehículos Disponibles • Financiamiento • Garantía</p>
     </div>
 
     <script>
-        let vehiclesData = [];
-
-        // Cargar datos del JSON
-        async function loadData() {
+        async function cargarVehiculos() {
             try {
                 const response = await fetch('data.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 const data = await response.json();
-                vehiclesData = data.vehiculos;
-                
-                renderVehicles(data);
-                renderPaymentMethods(data);
-                renderFooter(data);
-                populateVehicleSelect(data);
+                console.log('Data cargado:', data);
+                renderizarVehiculos(data.vehiculos);
+                document.getElementById('loading').style.display = 'none';
             } catch (error) {
-                console.error('Error cargando data.json:', error);
+                console.error('Error:', error);
+                document.getElementById('loading').innerHTML = '<p style="color: #ff6b35;">Error al cargar los datos: ' + error.message + '</p>';
             }
         }
 
-        // Renderizar vehículos
-        function renderVehicles(data) {
-            const grid = document.getElementById('vehiclesGrid');
-            grid.innerHTML = data.vehiculos.map(auto => `
-                <div class="vehicle-card">
-                    <div class="vehicle-header">
-                        <span class="badge">✨ DISPONIBLE</span>
-                        <h3>${auto.marca} ${auto.modelo}</h3>
-                        <p>${auto.color} | ${auto.ano}</p>
+        function renderizarVehiculos(vehiculos) {
+            const container = document.getElementById('vehiculosContainer');
+            container.innerHTML = '';
+
+            vehiculos.forEach(vehiculo => {
+                const card = document.createElement('div');
+                card.className = 'vehiculo-card';
+                
+                card.innerHTML = `
+                    <div class="imagen-container">
+                        <img class="imagen-principal" src="data:image/jpeg;base64,${vehiculo.imagen_principal}" alt="${vehiculo.marca} ${vehiculo.modelo}">
                     </div>
-                    <div class="vehicle-specs">
-                        <div class="specs-grid">
-                            <div class="spec-item">
-                                <div class="spec-label">Año</div>
-                                <div class="spec-value">${auto.ano}</div>
-                            </div>
-                            <div class="spec-item">
-                                <div class="spec-label">Color</div>
-                                <div class="spec-value">${auto.color}</div>
-                            </div>
-                            <div class="spec-item">
-                                <div class="spec-label">Millaje</div>
-                                <div class="spec-value">${auto.millaje.toLocaleString()} mi</div>
-                            </div>
-                            <div class="spec-item">
-                                <div class="spec-label">Transmisión</div>
-                                <div class="spec-value">${auto.transmision}</div>
-                            </div>
+                    <div class="vehiculo-info">
+                        <div class="vehiculo-header">
+                            <div class="vehiculo-nombre">${vehiculo.marca} ${vehiculo.modelo}</div>
+                            <div class="vehiculo-año">${vehiculo.año}</div>
                         </div>
-                        <div class="price-tag">
-                            <div class="price-label">Precio</div>
-                            <div class="price-amount">$${auto.precio.toLocaleString()}</div>
+                        <div class="vehiculo-detalles">
+                            <div class="detalle"><span class="detalle-label">Color:</span> ${vehiculo.color}</div>
+                            <div class="detalle"><span class="detalle-label">Millas:</span> ${vehiculo.millas}</div>
                         </div>
-                        <button class="action-btn" onclick="openModal('${auto.marca} ${auto.modelo}')">
-                            Contactar
-                        </button>
+                        <div class="vehiculo-precio">${vehiculo.precio}</div>
+                        <button class="btn-disponible">✓ ${vehiculo.estado}</button>
                     </div>
-                </div>
-            `).join('');
+                `;
+                
+                container.appendChild(card);
+            });
         }
 
-        // Renderizar métodos de pago
-        function renderPaymentMethods(data) {
-            const grid = document.getElementById('paymentGrid');
-            grid.innerHTML = data.metodos_pago.map(metodo => `
-                <div class="payment-option">
-                    <div class="payment-icon">${metodo.icono}</div>
-                    <h4>${metodo.nombre}</h4>
-                    <p>${metodo.descripcion}</p>
-                </div>
-            `).join('');
-        }
-
-        // Renderizar footer
-        function renderFooter(data) {
-            const address = `${data.concesionario.ubicacion}<br>📞 ${data.concesionario.telefono}<br>✉️ ${data.concesionario.email}`;
-            const schedule = `Lunes - Viernes<br>${data.concesionario.horarios.lunes_viernes}<br><br>Sábado<br>${data.concesionario.horarios.sabado}<br><br>Domingo<br>${data.concesionario.horarios.domingo}`;
-            
-            document.getElementById('footerAddress').innerHTML = address;
-            document.getElementById('footerSchedule').innerHTML = schedule;
-            document.getElementById('footerContact').innerHTML = address;
-        }
-
-        // Poblar select de vehículos
-        function populateVehicleSelect(data) {
-            const select = document.getElementById('vehicle');
-            select.innerHTML = data.vehiculos.map(auto => 
-                `<option value="${auto.marca} ${auto.modelo} - $${auto.precio.toLocaleString()}">
-                    ${auto.marca} ${auto.modelo} - $${auto.precio.toLocaleString()}
-                </option>`
-            ).join('');
-        }
-
-        // Modal
-        function openModal(vehiculo) {
-            document.getElementById('contactModal').style.display = 'block';
-            document.getElementById('vehicle').value = vehiculo;
-        }
-
-        function closeModal() {
-            document.getElementById('contactModal').style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('contactModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        }
-
-        // Enviar formulario
-        function submitForm(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const vehicle = document.getElementById('vehicle').value;
-            const paymentMethod = document.getElementById('paymentMethod').value;
-            const message = document.getElementById('message').value;
-
-            const emailBody = `
-NUEVA SOLICITUD - H6 MOTORS
-
-Cliente: ${name}
-Teléfono: ${phone}
-Email: ${email}
-
-Vehículo: ${vehicle}
-Método de Pago: ${paymentMethod}
-
-Mensaje: ${message}
-
-Fecha: ${new Date().toLocaleString('es-MX')}
-            `;
-
-            const mailtoLink = `mailto:Automovilesh6@gmail.com?subject=NUEVA SOLICITUD - H6 Motors&body=${encodeURIComponent(emailBody)}`;
-            
-            alert(`¡Gracias ${name}! Tu solicitud ha sido enviada.`);
-            document.getElementById('contactForm').reset();
-            closeModal();
-            window.location.href = mailtoLink;
-        }
-
-        // Cargar datos cuando la página carga
-        loadData();
+        window.addEventListener('DOMContentLoaded', cargarVehiculos);
     </script>
 </body>
 </html>
+EOF
+echo "✅ HTML arreglado creado"
