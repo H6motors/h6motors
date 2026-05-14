@@ -3,54 +3,31 @@
     "nombre": "H6 MOTORS LLC",
     "ubicacion": "1917 Highway 6 S, Houston, TX 77077",
     "email": "AutosVivlesH6@gmail.com",
-    "telefono": "Llamar para información",
-    "horarios": {
-      "lunes_viernes": "9:00 AM - 6:00 PM",
-      "sabado": "10:00 AM - 4:00 PM",
-      "domingo": "Cerrado"
-    }
+    "telefono": "Llamar para información"
   },
   "metodos_pago": [
-    {"nombre": "Zelle",    "icono": "💳", "descripcion": "Transferencia bancaria segura y rápida"},
+    {"nombre": "Zelle", "icono": "💳", "descripcion": "Transferencia bancaria segura y rápida"},
     {"nombre": "Cash App", "icono": "📱", "descripcion": "App móvil para pagos digitales"},
     {"nombre": "Efectivo", "icono": "💵", "descripcion": "Pago en efectivo directo"}
   ],
   "vehiculos": [
     {
-      "id": 1,
-      "marca": "Ford",
-      "modelo": "F-150",
-      "año": 2015,
-      "precio": "$8,500",
-      "millas": "142,310",
-      "color": "Negro / Gris",
-      "condicion": "Motor y transmisión al 100%",
-      "estado": "Disponible",
-      "imagen_principal": ""
+      "id": 1, "marca": "Ford", "modelo": "F-150", "año": 2015,
+      "precio": "$8,500", "millas": "142,310", "color": "Negro / Gris",
+      "estado": "Disponible", "imagen_principal": "",
+      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/2015_Ford_F-150_XL%2C_front_9.3.19.jpg/640px-2015_Ford_F-150_XL%2C_front_9.3.19.jpg"
     },
     {
-      "id": 2,
-      "marca": "Toyota",
-      "modelo": "Tacoma",
-      "año": 2013,
-      "precio": "$18,500",
-      "millas": "142,000",
-      "color": "Blanco Pearl",
-      "condicion": "Excelente condición, funcionamiento perfecto",
-      "estado": "Disponible",
-      "imagen_principal": ""
+      "id": 2, "marca": "Toyota", "modelo": "Tacoma", "año": 2013,
+      "precio": "$18,500", "millas": "142,000", "color": "Blanco Pearl",
+      "estado": "Disponible", "imagen_principal": "",
+      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/2012_Toyota_Tacoma_%28AN30R%29_SR5_cab_chassis_%282015-07-03%29_01.jpg/640px-2012_Toyota_Tacoma_%28AN30R%29_SR5_cab_chassis_%282015-07-03%29_01.jpg"
     },
     {
-      "id": 3,
-      "marca": "Chevrolet",
-      "modelo": "Silverado",
-      "año": 2023,
-      "precio": "$17,000",
-      "millas": "130,000",
-      "color": "Blanco",
-      "condicion": "Casi nuevo, excelentes condiciones",
-      "estado": "Disponible",
-      "imagen_principal": ""
+      "id": 3, "marca": "Chevrolet", "modelo": "Silverado", "año": 2023,
+      "precio": "$17,000", "millas": "130,000", "color": "Blanco",
+      "estado": "Disponible", "imagen_principal": "",
+      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/2022_Chevrolet_Silverado_1500_LT%2C_front_8.22.22.jpg/640px-2022_Chevrolet_Silverado_1500_LT%2C_front_8.22.22.jpg"
     }
   ]
 }
